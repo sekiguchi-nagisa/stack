@@ -1,6 +1,6 @@
 var Stack = function() {
-    this.value;
-    this.next;
+    this.value = 0;
+    this.next = 0;
 }
 
 var push = function(stack, value) {
@@ -13,7 +13,6 @@ var push = function(stack, value) {
 var pop = function(stack) {
     var temp = stack;
     stack = temp.next;
-    temp.next = null;
 
     return temp.value;
 }
@@ -26,3 +25,5 @@ var main = function() {
     console.log(pop(s));
     console.log(pop(s));
 }
+
+main();
