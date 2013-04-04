@@ -2,6 +2,7 @@ var HashMap = function() {
     this.list = new Array(16);
     this.put = function(key, value) {
         var hash = makeHash(key);
+        console.log("hash = " + hash);
         if (this.list[hash].value == null) {
             this.list[hash].key = key;
             this.list[hash].value = value;
@@ -16,6 +17,8 @@ var HashMap = function() {
 
     this.get = function(key) {
         var hash = makeHash(key);
+        console.log("hash = " + hash);
+
         if (this.list[hash].key == key) {
             return this.list[hash].value;
         }
@@ -44,9 +47,9 @@ var List = function() {
 
 var makeHash = function(key) {
     var temp = 0;
-    for (var i = 0; i < key.lenght; i++) {
+    for (var i = 0; i < key.length; i++) {
         var c = key.charCodeAt(i);
-        temp += c * Math.pow(2, i);
+        temp += c;
     }
     var hash = temp % 16;
     return hash;
@@ -55,7 +58,9 @@ var makeHash = function(key) {
 var hashMap = new HashMap();
 hashMap.put("hello world", 123);
 hashMap.put("stderr", 444);
+hashMap.put("world hello", 567);
 
 console.log(hashMap.get("hello world"));
 console.log(hashMap.get("stderr"));
 console.log(hashMap.get("stder"));
+console.log(hashMap.get("world hello"));
