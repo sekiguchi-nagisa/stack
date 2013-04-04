@@ -1,5 +1,6 @@
 var HashMap = function() {
-    this.arrayOfList = new Array(16);
+    const num = 16;
+    this.arrayOfList = new Array(num);
     this.set = function(key, value) {
         var hash = makeHash(key);
         console.log("hash = " + hash);
@@ -44,7 +45,7 @@ var HashMap = function() {
         return hash;
     }
 
-    for (var i = 0; i < 16; i++) {
+    for (var i = 0; i < num; i++) {
         this.arrayOfList[i] = new List();
     }
 }
