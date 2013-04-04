@@ -1,5 +1,22 @@
 var HashMap = function() {
     const num = 16;
+
+    var List = function() {
+        this.key = null;
+        this.value = null;
+        this.next = null;
+    }
+
+    var makeHash = function(key) {
+        var temp = 0;
+        for (var i = 0; i < key.length; i++) {
+            var c = key.charCodeAt(i);
+            temp += c;
+        }
+        var hash = temp % 16;
+        return hash;
+    }
+
     this.arrayOfList = new Array(num);
     this.set = function(key, value) {
         var hash = makeHash(key);
@@ -35,25 +52,9 @@ var HashMap = function() {
         return null;
     }
 
-    var makeHash = function(key) {
-        var temp = 0;
-        for (var i = 0; i < key.length; i++) {
-            var c = key.charCodeAt(i);
-            temp += c;
-        }
-        var hash = temp % 16;
-        return hash;
-    }
-
     for (var i = 0; i < num; i++) {
         this.arrayOfList[i] = new List();
     }
-}
-
-var List = function() {
-    this.key = null;
-    this.value = null;
-    this.next = null;
 }
 
 var hashMap = new HashMap();
